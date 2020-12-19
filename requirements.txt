@@ -1,0 +1,12 @@
+streamlit==0.73.0
+Pillow==7.2.0
+librosa==0.8.0
+SoundFile==0.10.3.post1
+ffmpeg-python==0.2.0
+matplotlib==3.3.0
+tensorflow==2.3.0
+Keras==2.4.3
+pydub==0.24.1
+numpy==1.18.5
+pandas==1.1.0
+h5py==2.10.0
