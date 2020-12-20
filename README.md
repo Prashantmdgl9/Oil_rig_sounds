@@ -10,4 +10,4 @@ Such analysis can reinforce the initial estimates of the site engineers and can 
 
 We have built a deep convolutional neural network on the spectrogram that has been created from the audio files
 
-The model works will an accuracy of 81%
+The model works with an accuracy of 81%
