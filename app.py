@@ -155,6 +155,18 @@ Final_Sound = ['Blowout', 'Gas Emission', 'Rock Bed', 'Heavy Gas', 'Heavy Metal'
 #!echo "backend: TkAgg" >> ~/.matplotlib/matplotlibrc
 import tensorflow.keras.backend as K
 path = "models/VGG16_CNN_5.h5"
+
+def argmax_np(arr):
+    max_index = 0
+    max_value = arr[0]
+
+    for i in range(1, len(arr)):
+        if arr[i] > max_value:
+            max_value = arr[i]
+            max_index = i
+
+    return max_index
+
 def classify(fig):
     TARGET_SIZE = (224, 224)
     BATCH_SIZE = 10
@@ -166,7 +178,7 @@ def classify(fig):
                                                       batch_size = BATCH_SIZE)
 
     pred = model.predict(test_batches)
-    rounded_prediction = np.argmax(pred, axis = 1)
+    rounded_prediction = argmax_np(pred)
     st.header("The sound belongs to the  category of: ")
     st.title(Final_Sound[rounded_prediction[0]])
 
