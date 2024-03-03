@@ -1,17 +1,13 @@
 import streamlit as st
 from PIL import Image
 import librosa
-import ffmpeg
 from pydub import AudioSegment
 import librosa.display
 import matplotlib.pyplot as plt
 from tensorflow.keras.models import load_model
 import numpy as np
-from keras.preprocessing.image import img_to_array
-import h5py
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.applications.xception import Xception, preprocess_input
-import pandas as pd
 def main():
 
     page = st.sidebar.selectbox("App Selections", ["Homepage", "About", "Identify"])
