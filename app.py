@@ -1,3 +1,4 @@
+import ffmpeg
 import librosa
 from pydub import AudioSegment
 import librosa.display
@@ -10,11 +11,12 @@ import tensorflow.keras.backend as K
 import streamlit as st
 import os
 from PIL import Image
-import ffmpeg
+from huggingface_hub import from_pretrained_keras
 
 
 
-os.environ["PATH"] += os.pathsep + f'/tmp/pip-ephem-wheel-cache-rewwi_30/wheels/30/33/46/5ab7eca55b9490dddbf3441c68a29535996270ef1ce8b9b6d7'
+
+#os.environ["PATH"] += os.pathsep + f'/tmp/pip-ephem-wheel-cache-rewwi_30/wheels/30/33/46/5ab7eca55b9490dddbf3441c68a29535996270ef1ce8b9b6d7'
 
 
 def main():
@@ -210,7 +212,8 @@ def argmax_np(arr):
 def classify(fig):
     TARGET_SIZE = (224, 224)
     BATCH_SIZE = 10
-    model = load_model_x(path)
+    #model = load_model_x(path)
+    model = from_pretrained_keras('Prashantmdgl9/sound_model')
     #model.summary()
     test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
     test_batches = test_datagen.flow_from_directory(path_2,
