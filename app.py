@@ -95,7 +95,8 @@ def save_file(sound_file):
     # save your sound file in the right folder by following the path
     with open(os.path.join(sound_file.name),'wb') as f:
          f.write(sound_file.getbuffer())
-    return sound_file.name
+    a = sound_file.name
+    return a
 
 
 
@@ -110,9 +111,9 @@ def identify1():
         audio_bytes = uploaded_file.read()
         st.audio(audio_bytes, format=uploaded_file.type)
         x = save_file(uploaded_file)
-        #print(x)
+        print(x)
         sound = AudioSegment.from_file(x)
-        #print("success")
+        print("success")
         z = sound.export(uploaded_file.name.split(".")[0]+'wav_file'+'.wav', format ="wav")
         y, sr = librosa.load(z)
         plot_spectrogram(y, sr)
