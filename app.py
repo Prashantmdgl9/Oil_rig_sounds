@@ -213,7 +213,7 @@ def classify(fig):
     TARGET_SIZE = (224, 224)
     BATCH_SIZE = 10
     #model = load_model_x(path)
-    model = from_pretrained_keras('Prashantmdgl9/sound_model')
+    model = from_pretrained_keras('Swayam007/sound_model_pb')
     #model.summary()
     test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
     test_batches = test_datagen.flow_from_directory(path_2,
