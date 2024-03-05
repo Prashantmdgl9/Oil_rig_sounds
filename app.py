@@ -11,6 +11,7 @@ import streamlit as st
 import os
 from PIL import Image
 import ffmpeg
+import ffprobe-python
 
 
 def main():
