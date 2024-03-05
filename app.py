@@ -13,7 +13,7 @@ def main():
     page = st.sidebar.selectbox("App Selections", ["Homepage", "About", "Identify"])
     if page == "Identify":
         st.title("Sound Classifier for Oil Rig Sounds")
-        identify()
+        identify1()
     elif page == "About":
         about()
     elif page == "Homepage":
@@ -83,6 +83,35 @@ def set_png_as_page_bg(png_file):
 
 datapath = '/Users/prashantmudgal/Documents/Quantplex Labs/Sound_app/data/'
 
+
+
+def save_file(sound_file):
+    # save your sound file in the right folder by following the path
+    with open(os.path.join(sound_file.name),'wb') as f:
+         f.write(sound_file.getbuffer())
+    return sound_file.name
+
+
+
+def identify1():
+
+    st.subheader("Choose a mp3 file that you extracted from the work site")
+    uploaded_file = st.file_uploader('Select')
+    if uploaded_file is not None:
+        file_details = {'filename':uploaded_file.name, 'filetype':uploaded_file.type, 'filesize':uploaded_file.size}
+        #st.write(file_details)
+        #st.write('### Play audio')
+        audio_bytes = uploaded_file.read()
+        st.audio(audio_bytes, format=uploaded_file.type)
+        x = save_file(uploaded_file)
+        #print(x)
+        sound = AudioSegment.from_file(x)
+        #print("success")
+        z = sound.export(uploaded_file.name.split(".")[0]+'wav_file'+'.wav', format ="wav")
+        y, sr = librosa.load(z)
+        plot_spectrogram(y, sr)
+
+
 def identify():
     set_png_as_page_bg('oil5.png')
     st.set_option('deprecation.showfileUploaderEncoding', False)
@@ -115,6 +144,10 @@ def mel_gram(signal, sampling_rate, slider_length = 512):
     #fig.savefig(datapath[:-5]+name)
     saveMel(signal)
 
+path_1 = "spects/test/0Euras/"
+path_2 = "spects/test"
+
+
 
 def saveMel(y):
 
@@ -143,8 +176,9 @@ def saveMel(y):
                 librosa.feature.melspectrogram(
                                 y=y,
                                 sr=SR)))
-    name = 'spects/test/0Euras/spect.png'
-    fig.savefig(datapath[:-5]+name)
+    #name = 'spects/test/0Euras/spect.png'
+    #fig.savefig(datapath[:-5]+name)
+    fig.savefig(path_1+"spect.png")
     classify(fig)
 
 Final_Sound = ['Blowout', 'Gas Emission', 'Rock Bed', 'Heavy Gas', 'Heavy Metal', 'Oil Drill Rig Exterior', 'Operatre Pump', 'Dieseling' , 'Fracturing', 'Hydraulic']
@@ -169,7 +203,7 @@ def classify(fig):
     model = load_model_x(path)
     #model.summary()
     test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
-    test_batches = test_datagen.flow_from_directory(datapath[:-5]+'spects'+'/test',
+    test_batches = test_datagen.flow_from_directory(path_2,
                                                       target_size = TARGET_SIZE,
                                                       batch_size = BATCH_SIZE)
 
