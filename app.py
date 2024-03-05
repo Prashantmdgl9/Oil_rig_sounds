@@ -13,6 +13,10 @@ from PIL import Image
 import ffmpeg
 
 
+
+os.environ["PATH"] += os.pathsep + f'/tmp/pip-ephem-wheel-cache-4vt4ipk_/wheels/30/33/46/5ab7eca55b9490dddbf3441c68a29535996270ef1ce8b9b6d7'
+
+
 def main():
 
     page = st.sidebar.selectbox("App Selections", ["Homepage", "About", "Identify"])
