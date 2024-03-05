@@ -1,3 +1,4 @@
+ffmpeg==1.4
 librosa==0.10.1
 pydub==0.25.1
 matplotlib==3.7.5
@@ -5,7 +6,5 @@ keras==2.13.1
 tensorflow==2.13.1
 numpy==1.24.3
 streamlit==1.31.1
-ffmpeg==1.4
-ffprobe==0.5
-ffprobe-python==1.0.3
 pillow==10.2.0
+huggingface-hub==0.21.3
