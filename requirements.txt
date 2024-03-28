@@ -9,4 +9,5 @@ streamlit==1.31.1
 pillow==10.2.0
 huggingface-hub==0.21.3
 opencv-python-headless==4.8.1.78
+ffprobe-python==1.0.3
 
