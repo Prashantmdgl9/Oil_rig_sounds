@@ -111,20 +111,22 @@ def identify1():
     uploaded_file = st.file_uploader('Select')
     if uploaded_file is not None:
         file_details = {'filename':uploaded_file.name, 'filetype':uploaded_file.type, 'filesize':uploaded_file.size}
-        st.write(uploaded_file.type)
+        #st.write(uploaded_file.type)
         if(uploaded_file.type == "audio/wav"):
-            st.write("yes")
+            #st.write("yes")
             audio_bytes = uploaded_file.read()
             st.audio(audio_bytes, format=uploaded_file.type)
             x = save_file(uploaded_file)
-            st.write(x)
+            #st.write(x)
             sound = AudioSegment.from_file(x)
-            st.write("success")
+            #st.write("success")
             z = sound.export(uploaded_file.name.split(".")[0]+'wav_file'+'.wav', format ="wav")
             y, sr = librosa.load(z)
             plot_spectrogram(y, sr)
         elif(uploaded_file.type == "audio/mpeg"):
+            t = uploaded_file.name.split(".")[0]+'wav_file'+'.wav'
             st.write("tough")
+            st.write(t)
             audio_bytes = uploaded_file.read()
             st.audio(audio_bytes, format=uploaded_file.type)
             x = save_file(uploaded_file)
