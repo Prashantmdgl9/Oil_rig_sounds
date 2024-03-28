@@ -112,7 +112,7 @@ def identify1():
     if uploaded_file is not None:
         file_details = {'filename':uploaded_file.name, 'filetype':uploaded_file.type, 'filesize':uploaded_file.size}
         st.write(uploaded_file.type)
-        if(uploaded_file.type == "wav"):
+        if(uploaded_file.type == "audio/wav"):
             st.write("yes")
         #st.write('### Play audio')
         audio_bytes = uploaded_file.read()
