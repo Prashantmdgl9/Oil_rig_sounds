@@ -1,4 +1,5 @@
 import ffmpeg
+import ffprobe
 import librosa
 from pydub import AudioSegment
 import librosa.display
