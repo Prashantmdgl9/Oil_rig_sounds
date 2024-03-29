@@ -140,7 +140,7 @@ def identify1():
             plot_spectrogram(y, sr)
         elif(uploaded_file.type == "audio/mpeg"):
             #t = uploaded_file.name.split(".")[0]+'wav_file'+'.wav'
-            st.write("tough")
+            #st.write("tough")
             #st.write(t)
             audio_bytes = uploaded_file.read()
             st.audio(audio_bytes, format=uploaded_file.type)
