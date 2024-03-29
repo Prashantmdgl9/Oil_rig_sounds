@@ -96,7 +96,7 @@ def set_png_as_page_bg(png_file):
     bin_str = get_base64_of_bin_file(png_file)
     page_bg_img = '''
     <style>
-    body {
+    .stApp {
     background-image: url("data:image/png;base64,%s");
     background-size: cover;
     }
