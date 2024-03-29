@@ -136,7 +136,7 @@ def identify1():
             sound = AudioSegment.from_file(x)
             z = sound.export(uploaded_file.name.split(".")[0]+'wav_file'+'.wav', format ="wav")
             y, sr = librosa.load(z)
-            
+            plot_spectrogram(y, sr)
 
              #st.write('### Play audio')
         
