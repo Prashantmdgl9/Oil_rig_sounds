@@ -13,6 +13,7 @@ import streamlit as st
 import os
 from PIL import Image
 from huggingface_hub import from_pretrained_keras
+import pandas as pd
 
 
 
@@ -37,9 +38,9 @@ def about():
     st.title("About present work")
     st.subheader("Billions of dollars are spent in oil rig operations including the safety on deck, quick analysis, efficiency etc. While multiple systems and heavy machinery are"
      " used for various tasks at hand, there always are avenues that can be explored to bring the efficiency and safety at optimum level.")
-    st.subheader("Multiple sounds are generated at the rigs during the extraction process and classifying the sounds correctly can help the engineers in reinforcing their"
+    st.markdown("Multiple sounds are generated at the rigs during the extraction process and classifying the sounds correctly can help the engineers in reinforcing their"
     " initial estimates and quick decisioing.")
-    audio_file = open("/Users/prashantmudgal/Documents/Quantplex Labs/Sound_app/machine_6.wav", 'rb')
+    audio_file = open("/machine_6.wav", 'rb')
     audio_bytes = audio_file.read()
     st.audio(audio_bytes, format='audio/wav')
 
