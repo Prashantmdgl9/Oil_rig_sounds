@@ -26,7 +26,7 @@ def main():
 
     page = st.sidebar.selectbox("App Selections", ["Homepage", "About", "Identify"])
     if page == "Identify":
-        st.title("Sound Classifier for Oil Rig Sounds")
+        st.title("Audio Classifier for Oil Rig Sounds")
         identify1()
     elif page == "About":
         about()
