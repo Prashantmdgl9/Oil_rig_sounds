@@ -40,7 +40,7 @@ def about():
      " used for various tasks at hand, there always are avenues that can be explored to bring the efficiency and safety at optimum level.")
     st.markdown("Multiple sounds are generated at the rigs during the extraction process and classifying the sounds correctly can help the engineers in reinforcing their"
     " initial estimates and quick decisioing.")
-    audio_file = open("/machine_6.wav", 'rb')
+    audio_file = open("machine_6.wav", 'rb')
     audio_bytes = audio_file.read()
     st.audio(audio_bytes, format='audio/wav')
 
