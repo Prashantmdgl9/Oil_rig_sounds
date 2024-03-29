@@ -214,7 +214,8 @@ Final_Sound = ['Blowout', 'Gas Emission', 'Rock Bed', 'Heavy Gas', 'Heavy Metal'
 #!echo "backend: TkAgg" >> ~/.matplotlib/matplotlibrc
 import tensorflow as tf
 #path = "models/VGG16_CNN_5.h5"
-tflite_model_file = "comp.tflite"
+tflite_model_file1 = "comp.tflite"
+tflite_model_file = "https://drive.google.com/file/d/1hnDpullTvIr6dwMWn7P7uPP-V9LoR-Zb/view?usp=sharing"
 import cv2
 img_path = "spects/test/0Euras/spect.png"
 
