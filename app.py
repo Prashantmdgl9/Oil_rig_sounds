@@ -12,7 +12,6 @@ import streamlit as st
 import os
 from PIL import Image
 from huggingface_hub import from_pretrained_keras
-import pydub
 
 
 
@@ -133,7 +132,7 @@ def identify1():
             path = "data/"
             x = save_file(uploaded_file)
             #st.write(x)
-            sound = pydub.AudioSegment.from_mp3(x)
+            sound = AudioSegment.from_file(uploaded_file)
             
 
              #st.write('### Play audio')
