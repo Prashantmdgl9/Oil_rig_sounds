@@ -134,6 +134,8 @@ def identify1():
             x = save_file(uploaded_file)
             #st.write(x)
             sound = AudioSegment.from_file(x)
+            z = sound.export(uploaded_file.name.split(".")[0]+'wav_file'+'.wav', format ="wav")
+            y, sr = librosa.load(z)
             
 
              #st.write('### Play audio')
