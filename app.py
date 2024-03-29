@@ -39,15 +39,17 @@ def about():
     st.subheader("Billions of dollars are spent in oil rig operations including the safety on deck, quick analysis, efficiency etc. While multiple systems and heavy machinery are"
      " used for various tasks at hand, there always are avenues that can be explored to bring the efficiency and safety at optimum level.")
     st.markdown("Multiple sounds are generated at the rigs during the extraction process and classifying the sounds correctly can help the engineers in reinforcing their"
-    " initial estimates and quick decisioing.")
+    " initial estimates and quick decisioning.")
     audio_file = open("machine_6.wav", 'rb')
     audio_bytes = audio_file.read()
     st.audio(audio_bytes, format='audio/wav')
 
-    st.markdown("In the present POC, we are classifying the sounds obtained from oil rigs into 10 categories:")
+    st.markdown("In the present POC, A trained and a very deep neural network classifies the sounds obtained from oil rigs into 10 cohorots:")
     Final_Sound = ['Blowout', 'Gas Emission', 'Rock Bed', 'Heavy Gas', 'Heavy Metal', 'Oil Drill Rig Exterior', 'Operatre Pump', 'Dieseling' , 'Fracturing', 'Hydraulic']
     df = pd.DataFrame(Final_Sound, columns=['Sound Class'])
     st.table(df)
+    st.divider()
+    st.markdown("The model was trained on the real production data and achieved an accuracy rate of **87%** in classifying the sounds it had heard for the first time")  
     #st.subheader("Blowout, Gas Emission, Rock Bed, Heavy Gas, Heavy Metal, Oil Drill Rig Exterior, Operatre Pump, Dieseling, Fracturing, Hydraulic")
 
 
@@ -173,7 +175,8 @@ def identify():
 
 
 def plot_spectrogram(y, sr):
-    st.header('Spectrogram of the audio is')
+    st.subheader("Map the audio problem to a vision problem")
+    st.subheader('Spectrogram of the audio is')
     return mel_gram(y, sr)
 
 
@@ -274,8 +277,8 @@ def classify(fig):
     
     #pred = model.predict(test_batches)
     #rounded_prediction = argmax_np(pred)
-    st.header("The sound belongs to the  category of: ")
-    st.title(Final_Sound[prediction_classes[0]])
+    st.subheader("The sound belongs to the  category of: ")
+    st.subheader(Final_Sound[prediction_classes[0]])
 
 
 @st.cache(allow_output_mutation=True)
