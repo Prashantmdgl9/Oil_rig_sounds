@@ -121,7 +121,7 @@ def save_file(sound_file):
 
 
 def identify1():
-    set_png_as_page_bg('oil5.png')
+    set_png_as_page_bg('sound_wave.png')
 
     st.subheader("Choose an audio file that you extracted from the work site")
     uploaded_file = st.file_uploader('Select')
