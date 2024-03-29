@@ -44,7 +44,7 @@ def about():
     audio_bytes = audio_file.read()
     st.audio(audio_bytes, format='audio/wav')
 
-    st.subheader("In the present POC, we are classifying the sounds obtained from oil rigs into 10 categories:")
+    st.markdown("In the present POC, we are classifying the sounds obtained from oil rigs into 10 categories:")
     Final_Sound = ['Blowout', 'Gas Emission', 'Rock Bed', 'Heavy Gas', 'Heavy Metal', 'Oil Drill Rig Exterior', 'Operatre Pump', 'Dieseling' , 'Fracturing', 'Hydraulic']
     df = pd.DataFrame(Final_Sound, columns=['Sound Class'])
     st.table(df)
@@ -122,7 +122,7 @@ def save_file(sound_file):
 
 def identify1():
 
-    st.subheader("Choose a mp3 file that you extracted from the work site")
+    st.subheader("Choose an audio file that you extracted from the work site")
     uploaded_file = st.file_uploader('Select')
     if uploaded_file is not None:
         file_details = {'filename':uploaded_file.name, 'filetype':uploaded_file.type, 'filesize':uploaded_file.size}
