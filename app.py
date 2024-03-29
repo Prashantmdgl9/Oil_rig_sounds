@@ -133,7 +133,7 @@ def identify1():
             path = "data/"
             x = save_file(uploaded_file)
             #st.write(x)
-            sound = AudioSegment.from_file(uploaded_file)
+            sound = AudioSegment.from_file(x)
             
 
              #st.write('### Play audio')
