@@ -34,7 +34,7 @@ def main():
         homepage()
 
 def about():
-    set_png_as_page_bg('oil2.png')
+    set_png_as_page_bg('oil10.png')
     st.title("About present work")
     st.subheader("Billions of dollars are spent in oil rig operations including the safety on deck, quick analysis, efficiency etc. While multiple systems and heavy machinery are"
      " used for various tasks at hand, there always are avenues that can be explored to bring the efficiency and safety at optimum level.")
