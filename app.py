@@ -21,6 +21,7 @@ from huggingface_hub import from_pretrained_keras
 
 
 def main():
+    hide_logos()
 
     page = st.sidebar.selectbox("App Selections", ["Homepage", "About", "Identify"])
     if page == "Identify":
@@ -67,8 +68,20 @@ def homepage():
     """
     st.markdown(html_temp, unsafe_allow_html = True)
 
-    image = Image.open('home6.png')
+    image = Image.open('home63.png')
     st.image(image, use_column_width = True)
+
+
+
+def hide_logos():
+    hide_streamlit_style = """
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    </style>
+
+    """
+    st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
 import base64
 
