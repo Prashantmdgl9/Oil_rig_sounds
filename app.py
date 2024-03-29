@@ -129,8 +129,9 @@ def identify1():
             #st.write(t)
             audio_bytes = uploaded_file.read()
             st.audio(audio_bytes, format=uploaded_file.type)
-            x = save_file(uploaded_file)
-            st.write(x)
+            path = "data/"
+            x = save_file(path+uploaded_file)
+            #st.write(x)
             #sound = AudioSegment.from_mp3(x)
             
 
