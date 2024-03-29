@@ -124,12 +124,12 @@ def identify1():
             y, sr = librosa.load(z)
             plot_spectrogram(y, sr)
         elif(uploaded_file.type == "audio/mpeg"):
-            t = uploaded_file.name.split(".")[0]+'wav_file'+'.wav'
+            #t = uploaded_file.name.split(".")[0]+'wav_file'+'.wav'
             st.write("tough")
-            st.write(t)
-            #audio_bytes = uploaded_file.read()
-            #st.audio(audio_bytes, format=uploaded_file.type)
-            x = save_file(t)
+            #st.write(t)
+            audio_bytes = uploaded_file.read()
+            st.audio(audio_bytes, format=uploaded_file.type)
+            x = save_file(uploaded_file)
             st.write(x)
             #sound = AudioSegment.from_mp3(x)
             
