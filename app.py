@@ -1,4 +1,5 @@
 import ffmpeg
+import ffprobe
 import librosa
 from pydub import AudioSegment
 import librosa.display
@@ -111,18 +112,34 @@ def identify1():
     uploaded_file = st.file_uploader('Select')
     if uploaded_file is not None:
         file_details = {'filename':uploaded_file.name, 'filetype':uploaded_file.type, 'filesize':uploaded_file.size}
-        #st.write(file_details)
-        #st.write('### Play audio')
-        audio_bytes = uploaded_file.read()
-        st.audio(audio_bytes, format=uploaded_file.type)
-        x = save_file(uploaded_file)
-        st.write(x)
-        sound = AudioSegment.from_file(x)
-        st.write("success")
-        z = sound.export(uploaded_file.name.split(".")[0]+'wav_file'+'.wav', format ="wav")
-        y, sr = librosa.load(z)
-        plot_spectrogram(y, sr)
+        #st.write(uploaded_file.type)
+        if(uploaded_file.type == "audio/wav"):
+            #st.write("yes")
+            audio_bytes = uploaded_file.read()
+            st.audio(audio_bytes, format=uploaded_file.type)
+            x = save_file(uploaded_file)
+            #st.write(x)
+            sound = AudioSegment.from_file(x)
+            #st.write("success")
+            z = sound.export(uploaded_file.name.split(".")[0]+'wav_file'+'.wav', format ="wav")
+            y, sr = librosa.load(z)
+            plot_spectrogram(y, sr)
+        elif(uploaded_file.type == "audio/mpeg"):
+            #t = uploaded_file.name.split(".")[0]+'wav_file'+'.wav'
+            st.write("tough")
+            #st.write(t)
+            audio_bytes = uploaded_file.read()
+            st.audio(audio_bytes, format=uploaded_file.type)
+            path = "data/"
+            x = save_file(uploaded_file)
+            #st.write(x)
+            sound = AudioSegment.from_file(x)
+            z = sound.export(uploaded_file.name.split(".")[0]+'wav_file'+'.wav', format ="wav")
+            y, sr = librosa.load(z)
+            plot_spectrogram(y, sr)
 
+             #st.write('### Play audio')
+        
 
 def identify():
     set_png_as_page_bg('oil5.png')
@@ -195,8 +212,12 @@ def saveMel(y):
 
 Final_Sound = ['Blowout', 'Gas Emission', 'Rock Bed', 'Heavy Gas', 'Heavy Metal', 'Oil Drill Rig Exterior', 'Operatre Pump', 'Dieseling' , 'Fracturing', 'Hydraulic']
 #!echo "backend: TkAgg" >> ~/.matplotlib/matplotlibrc
-import tensorflow.keras.backend as K
-path = "models/VGG16_CNN_5.h5"
+import tensorflow as tf
+#path = "models/VGG16_CNN_5.h5"
+tflite_model_file = "comp.tflite"
+import cv2
+img_path = "spects/test/0Euras/spect.png"
+
 
 def argmax_np(arr):
     max_index = 0
@@ -213,17 +234,33 @@ def classify(fig):
     TARGET_SIZE = (224, 224)
     BATCH_SIZE = 10
     #model = load_model_x(path)
-    model = from_pretrained_keras('Swayam007/sound_model_pb')
+    #model = from_pretrained_keras('Swayam007/sound_model_pb')
     #model.summary()
-    test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
-    test_batches = test_datagen.flow_from_directory(path_2,
-                                                      target_size = TARGET_SIZE,
-                                                      batch_size = BATCH_SIZE)
+    #test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
+    #test_batches = test_datagen.flow_from_directory(path_2,
+     #                                                 target_size = TARGET_SIZE,
+     #                                                 batch_size = BATCH_SIZE)
 
-    pred = model.predict(test_batches)
-    rounded_prediction = argmax_np(pred)
+    interpreter = tf.lite.Interpreter(model_path=tflite_model_file)
+    # Get input and output tensors.
+    input_details = interpreter.get_input_details()
+    output_details = interpreter.get_output_details()
+
+    interpreter.allocate_tensors()
+    img = cv2.imread(img_path)
+    new_img = cv2.resize(img, (224, 224))
+    a = np.array(new_img,  dtype=np.float32)
+    a = np.expand_dims(a, axis=0)
+    interpreter.set_tensor(input_details[0]['index'], a)
+    interpreter.invoke()
+    tflite_model_predictions = interpreter.get_tensor(output_details[0]['index'])
+    prediction_classes = np.argmax(tflite_model_predictions, axis=1)
+
+    
+    #pred = model.predict(test_batches)
+    #rounded_prediction = argmax_np(pred)
     st.header("The sound belongs to the  category of: ")
-    st.title(Final_Sound[rounded_prediction[0]])
+    st.title(Final_Sound[prediction_classes[0]])
 
 
 @st.cache(allow_output_mutation=True)
