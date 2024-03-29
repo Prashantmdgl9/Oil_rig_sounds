@@ -49,7 +49,7 @@ def about():
     df = pd.DataFrame(Final_Sound, columns=['Sound Class'])
     st.table(df)
     st.divider()
-    st.markdown("The model was trained on the real production data and achieved an accuracy rate of **87%** in classifying the sounds it had heard for the first time")  
+    st.markdown("**The model was trained on the real production data and achieved an accuracy rate of 87% in classifying the sounds it heard for the first time**")  
     #st.subheader("Blowout, Gas Emission, Rock Bed, Heavy Gas, Heavy Metal, Oil Drill Rig Exterior, Operatre Pump, Dieseling, Fracturing, Hydraulic")
 
 
@@ -175,8 +175,8 @@ def identify():
 
 
 def plot_spectrogram(y, sr):
-    st.subheader("Map the audio problem to a vision problem")
-    st.subheader('Spectrogram of the audio is')
+    st.subheader("Mapping the audio problem to a vision problem")
+    st.subheader('Spectrogram of the audio is:')
     return mel_gram(y, sr)
 
 
