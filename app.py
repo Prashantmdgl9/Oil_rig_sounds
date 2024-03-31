@@ -228,7 +228,7 @@ def saveMel(y):
     fig.savefig(path_1+"spect.png")
     classify(fig)
 
-Final_Sound = ['Blowout', 'Gas Emission', 'Rock Bed', 'Heavy Gas', 'Heavy Metal', 'Oil Drill Rig Exterior', 'Operatre Pump', 'Dieseling' , 'Fracturing', 'Hydraulic']
+Final_Sound = ['Water Vapour Blowout', 'Methane', 'Benzene', 'Heavy Gas', 'Hydrogen Sulphide', 'Oil Drill Rig Exterior', 'Operator Pump', 'Dieseling' , 'Fracturing', 'Hydraulic']
 #!echo "backend: TkAgg" >> ~/.matplotlib/matplotlibrc
 import tensorflow as tf
 #path = "models/VGG16_CNN_5.h5"
