@@ -45,7 +45,7 @@ def about():
     st.audio(audio_bytes, format='audio/wav')
 
     st.markdown("In the present POC, A trained and a very deep neural network classifies the sounds obtained from oil rigs into 10 cohorots:")
-    Final_Sound = ['Blowout', 'Gas Emission', 'Rock Bed', 'Heavy Gas', 'Heavy Metal', 'Oil Drill Rig Exterior', 'Operatre Pump', 'Dieseling' , 'Fracturing', 'Hydraulic']
+    Final_Sound = ['Water Vapour Blowout', 'Methane', 'Benzene', 'Heavy Gas', 'Hydrogen Sulphide', 'Oil Drill Rig Exterior', 'Operator Pump', 'Dieseling' , 'Fracturing', 'Hydraulic']
     df = pd.DataFrame(Final_Sound, columns=['Sound Class'])
     st.table(df)
     st.divider()
